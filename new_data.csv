@@ -1,0 +1,7 @@
+brand,model_year,km_driven,ownership,location,cc,mileage,power_bhp,price
+honda,2000,222222,first owner,hyderabad,100,65,10,45693
+ktm,2005,22000,first owner,delhi,200,25,10,77226
+yamaha,2006,22000,first owner,pune,500,25,30,157703
+royal enfield,2005,22000,second owner,chennai,650,25,30,144882
+tvs,2018.0,10000.0,first owner,pune,200.0,50.0,25.0,97757
+hero,2016.0,90000.0,second owner,gurgaon,100.0,35.0,10.0,45024
