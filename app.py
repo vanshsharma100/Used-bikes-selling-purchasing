@@ -8,6 +8,7 @@ import joblib
 import streamlit as st
 import base64
 import os 
+import sklearn
 
 from sklearn.model_selection  import train_test_split,RandomizedSearchCV
 from sklearn.ensemble import RandomForestRegressor
@@ -28,15 +29,15 @@ data=pd.read_csv('finaa.csv')
 x=data[['owner','location','cc','mileage_','power_','bike_age','km_per_year']]
 y = np.log1p(data['price'])
 
-# num_features = x.select_dtypes(include=['int64','float64']).columns
-# cat_features = x.select_dtypes(include=['object']).columns
+num_features = x.select_dtypes(include=['int64','float64']).columns
+cat_features = x.select_dtypes(include=['object']).columns
 
-# prep = ColumnTransformer(
-#     transformers=[
-#         ('num', StandardScaler(), num_features),
-#         ('cat', OneHotEncoder(handle_unknown='ignore'), cat_features)
-#     ]
-# )
+prep = ColumnTransformer(
+    transformers=[
+        ('num', StandardScaler(), num_features),
+        ('cat', OneHotEncoder(handle_unknown='ignore'), cat_features)
+    ]
+)
 
 x_train, x_test, y_train, y_test = train_test_split(
     x, y, test_size=0.2, random_state=42
