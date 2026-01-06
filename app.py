@@ -9,7 +9,7 @@ import streamlit as st
 import base64
 import os 
 import sklearn
-
+from PIL import Image
 from sklearn.model_selection  import train_test_split,RandomizedSearchCV
 from sklearn.ensemble import RandomForestRegressor
 from sklearn.metrics import r2_score,mean_squared_error,mean_absolute_error
@@ -88,25 +88,6 @@ def selling(brand,model_year,km_driven,ownership,location,cc,mileage,power_bhp,b
     
 
 
-
-
-
-
-def show_pdf(file_path):
-    with open(file_path, "rb") as f:
-        base64_pdf = base64.b64encode(f.read()).decode('utf-8')
-
-    pdf_display = f"""
-    <iframe 
-        src="data:application/pdf;base64,{base64_pdf}" 
-        width="100%" 
-        height="800px"
-        type="application/pdf">
-    </iframe>
-    """
-
-    st.markdown(pdf_display, unsafe_allow_html=True)
-
 def imagee():
     from PIL import Image
 
@@ -172,8 +153,17 @@ elif menu_option == "visualization":
 
 
     with tab1:
-        st.subheader("Report of your model")
-        show_pdf("visualization.pdf")
+        st.subheader("Visualization report of your model")
+        st.markdown("Tool : PowerBI")
+        # show_pdf("visualization.pdf")
+        img1 = Image.open("visualization-2.png")
+        st.image(img1, caption="Model", use_container_width=True)
+        img2 = Image.open("visualization-3.png")
+        st.image(img2, caption="Model", use_container_width=True)
+        img3 = Image.open("visualization-4.png")
+        st.image(img3, caption="Model", use_container_width=True)
+        img4 = Image.open("visualization-5.png")
+        st.image(img4, caption="Model", use_container_width=True)
 
     with tab2:
         st.subheader("Model visualization")
