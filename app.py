@@ -26,7 +26,7 @@ from sklearn.inspection import permutation_importance
 
 data=pd.read_csv('finaa.csv')
 
-x=data[['owner','location','cc','mileage_','power_','bike_age','km_per_year']]
+x=data[['owner','location','cc','mileage_','power_','bike_age','km_per_year','brands']]
 y = np.log1p(data['price'])
 
 num_features = x.select_dtypes(include=['int64','float64']).columns
@@ -43,11 +43,12 @@ x_train, x_test, y_train, y_test = train_test_split(
     x, y, test_size=0.2, random_state=42
 )
 
-model=joblib.load('bike_final.joblib')
+model=joblib.load('bike_finally.joblib')
 
 y_pred=model.predict(x_test)
 y_pred = np.expm1(y_pred)
 y_test = np.expm1(y_test)
+
 
 
 
@@ -58,12 +59,12 @@ csv_file="new_data.csv"
 
 
 def purchasing(brand,model_year,km_driven,ownership,location,cc,mileage,power_bhp,bike_age,km_per_year):
-    inp=pd.DataFrame([[ownership,location,cc,mileage,power_bhp,bike_age,km_per_year]],columns=['owner','location','cc','mileage_','power_','bike_age','km_per_year'])
+    inp=pd.DataFrame([[ownership,location,cc,mileage,power_bhp,bike_age,km_per_year,brand]],columns=['owner','location','cc','mileage_','power_','bike_age','km_per_year','brands'])
     out=np.expm1(model.predict(inp))
     st.write('Your bike price is: ₹',round(out[0],2))
 
 def selling(brand,model_year,km_driven,ownership,location,cc,mileage,power_bhp,bike_age,km_per_year):
-    inpp=pd.DataFrame([[ownership,location,cc,mileage,power_bhp,bike_age,km_per_year]],columns=['owner','location','cc','mileage_','power_','bike_age','km_per_year'])
+    inpp=pd.DataFrame([[ownership,location,cc,mileage,power_bhp,bike_age,km_per_year,brand]],columns=['owner','location','cc','mileage_','power_','bike_age','km_per_year','brands'])
     outt=np.expm1(model.predict(inpp))[0]
     st.write('Approximate selling price of your bike: ₹',round(outt,2))
     new_data = pd.DataFrame([{
