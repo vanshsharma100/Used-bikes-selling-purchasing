@@ -115,13 +115,13 @@ if menu_option=="selling/purchasing":
         st.subheader("Tell Us Your Bike Requirements")
         with st.form("add_form"):
             brand= st.selectbox("Which bike brand do you prefer?",['bajaj','ktm','royal enfield','hero','honda','tvs','yamaha','suzuki','others'])
-            model_year=st.number_input("which model year you prefer between 1990-2020  ? ")
-            km_driven=st.number_input("Enter how many kilometers the bike has been driven")
+            model_year=st.number_input("which model year you prefer  ? ",min_value=1990,max_value=2020,step=1)
+            km_driven=st.number_input("Enter how many kilometers the bike has been driven",max_value=200000,step=1000)
             ownership=st.selectbox("ownership",['first owner','second owner'])
             location=st.selectbox("enter your location",['hyderabad', 'bangalore', 'chennai', 'delhi', 'mumbai','gurgaon', 'pune', 'ahmedabad', 'jaipur', 'faridabad','Other'])
-            cc=st.number_input('Select Engine Capacity (CC)')
-            mileage=st.number_input('Enter your minimum mileage requirement (km/l)')
-            power_bhp=st.number_input('enter your power(bhp) requirnment ')
+            cc=st.number_input('Select Engine Capacity (CC)',min_value=100,max_value=1000,step=50,value=100)
+            mileage=st.number_input('Enter your minimum mileage requirement (km/l)',min_value=10,step=5)
+            power_bhp=st.number_input('enter your power(bhp) requirnment ',max_value=30,step=1)
             bike_age=2025-model_year
             km_per_year=km_driven//bike_age
             button=st.form_submit_button("check price")
@@ -131,13 +131,13 @@ if menu_option=="selling/purchasing":
         st.subheader("Tell Us Your Bike Performance")
         with st.form("add_form1"):
             brand= st.selectbox("What is the brand of your bike?",['bajaj','ktm','royal enfield','hero','honda','tvs','yamaha','suzuki','others'])
-            model_year=st.number_input("In which year was your bike manufactured? (1990–2020)")
-            km_driven=st.number_input("How many kilometers has your bike been driven?")
-            ownership=st.selectbox("What is the ownership status of your bike?",['first owner','second owner'])
-            location=st.selectbox("In which city is your bike currently located?",['hyderabad', 'bangalore', 'chennai', 'delhi', 'mumbai','gurgaon', 'pune', 'ahmedabad', 'jaipur', 'faridabad','Other'])
-            cc=st.number_input('What is the engine capacity (CC) of your bike?')
-            mileage=st.number_input('What mileage does your bike give? (km/l)')
-            power_bhp=st.number_input('What is the engine power of your bike? (in BHP)')
+            model_year=st.number_input("which model year you prefer  ? ",min_value=1990,max_value=2020,step=1)
+            km_driven=st.number_input("Enter how many kilometers the bike has been driven",max_value=200000,step=1000)
+            ownership=st.selectbox("ownership",['first owner','second owner'])
+            location=st.selectbox("enter your location",['hyderabad', 'bangalore', 'chennai', 'delhi', 'mumbai','gurgaon', 'pune', 'ahmedabad', 'jaipur', 'faridabad','Other'])
+            cc=st.number_input('Select Engine Capacity (CC)',min_value=100,max_value=1000,step=50,value=100)
+            mileage=st.number_input('Enter your minimum mileage requirement (km/l)',min_value=10,step=5)
+            power_bhp=st.number_input('enter your power(bhp) requirnment ',max_value=30,step=1)
             bike_age=2025-model_year
             km_per_year=km_driven//bike_age
             button=st.form_submit_button("check approximate price")
